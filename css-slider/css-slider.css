@@ -1,0 +1,302 @@
+/* ==================================================
+   BASIC PAGE STYLES
+   ================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  background: #f5f5f5;
+  color: #111;
+}
+
+.site-header,
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-header p {
+  max-width: 720px;
+  margin: 0.75rem auto 0;
+  line-height: 1.4;
+}
+
+.demo-section h2 {
+  margin: 0 0 1rem;
+}
+
+
+/* ==================================================
+   SLIDER FOUNDATION (works everywhere)
+   ==================================================
+   Even if “native arrows/dots” aren’t supported,
+   this remains a clean scroll-snap gallery.
+   ================================================== */
+
+.slider {
+  /* horizontal strip of slides */
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* size + centering */
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0;  /* keep slides flush */
+  gap: 0;
+
+  /* Cosmetic */
+  scrollbar-width: none; /* Firefox */
+  overscroll-behavior-x: contain;
+
+  /* Create a “frame” */
+  background: white;
+  border: 4px solid white;
+  border-radius: 0.85rem;
+
+  /* Cutting-edge: used by anchor-positioned arrows + dots */
+  anchor-name: --slider;
+}
+
+.slider::-webkit-scrollbar { display: none; }
+
+.slide {
+  list-style: none;
+
+  /* One slide fills the visible area */
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.slide img {
+  width: 100%;
+  height: 360px;       /* TRY: 240px, 420px */
+  object-fit: cover;   /* TRY: contain */
+  display: block;
+
+  border-radius: 0.6rem;
+  background: white;
+}
+
+
+/* ==================================================
+   NATIVE ARROWS (experimental CSS)
+   ==================================================
+   NOTE:
+   - Without anchor positioning, browsers may place the
+     arrows in odd locations. We only “turn on” our
+     positioning rules when anchor positioning is supported.
+   ================================================== */
+
+/* Create the buttons */
+.slider::scroll-button(inline-start) { content: "◀" / "Previous slide"; }
+.slider::scroll-button(inline-end)   { content: "▶" / "Next slide"; }
+
+/* Base styling (safe defaults) */
+.slider::scroll-button(*) {
+  inline-size: 34px;
+  aspect-ratio: 1;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  border: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.slider::scroll-button(*):hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.slider::scroll-button(*):focus {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+/* Optional: show disabled appearance at the ends */
+.slider::scroll-button(*):disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* ----------------------------------------------
+   Upgrade: anchor positioning (pins arrows to slider)
+   ---------------------------------------------- */
+@supports (position-anchor: --slider) {
+
+  .slider::scroll-button(*) {
+    position: absolute;
+    position-anchor: --slider;
+
+    /* vertically center against the slider itself */
+    top: anchor(center);
+    transform: translateY(-50%);
+
+    z-index: 10;
+  }
+
+  /* Place arrows just INSIDE the slider frame */
+  .slider::scroll-button(inline-start) {
+    left: calc(anchor(left) + 10px);
+  }
+
+  .slider::scroll-button(inline-end) {
+    left: calc(anchor(right) - 34px - 10px);
+  }
+}
+
+
+/* ==================================================
+   NATIVE DOTS / MARKERS (experimental CSS)
+   ==================================================
+   By default, marker group appears after the slider.
+   With anchor positioning support, we pin the dots
+   directly under the slider so they feel “attached.”
+   ================================================== */
+
+.slider {
+  /* tells the browser to generate dot UI after the slider */
+  scroll-marker-group: after;
+}
+
+.slide::scroll-marker {
+  content: " " / "Go to slide";
+
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+
+  background: #bbb;
+  opacity: 0.75;
+  border: 0;
+}
+
+.slide::scroll-marker:hover {
+  background: #666;
+  opacity: 1;
+}
+
+.slide::scroll-marker:focus {
+  outline: none;
+}
+
+/* Default layout (works even without anchors) */
+.slider::scroll-marker-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0 0;
+}
+
+/* Anchor-position the dot row under the slider (if supported) */
+@supports (position-anchor: --slider) {
+
+  .slider::scroll-marker-group {
+    position: absolute;
+    position-anchor: --slider;
+
+    /* place it 12px below the slider frame */
+    top: calc(anchor(bottom) + 12px);
+
+    /* center it under the slider */
+    left: anchor(center);
+    transform: translateX(-50%);
+
+    /* remove the padding-based spacing since we're positioning it */
+    padding: 0;
+
+    z-index: 10;
+  }
+}
+
+/* ==================================================
+   ACTIVE DOT (when the slide is currently in view)
+   ==================================================
+   This is the missing piece:
+   - Clicking arrows changes scroll position (not URL hash)
+   - :target-current lets CSS know which marker corresponds
+     to the currently visible slide
+*/
+
+.slide::scroll-marker {
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.slide::scroll-marker:target-current {
+  background: #444; /* active dot color */
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+
+/* ==================================================
+   LESSON NOTES STYLING
+   ================================================== */
+
+.lesson-notes {
+  max-width: 800px;
+  margin: 8rem auto 0;
+  text-align: left;
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid #ddd;
+  line-height: 1.3;
+  font-size: 1.25rem;
+}
+
+.lesson-notes code {
+  font-family: ui-monospace, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.lesson-notes pre {
+  overflow-x: auto;
+  background: #f5f5f5;
+  padding: 1.5rem;
+  margin: 0.5rem 0 2.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e5e5;
+  font-size: 85%;
+}
+
+.lesson-notes h2 {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid silver;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-notes h2:first-of-type {
+  margin-top: 0;
+}
+
+.lesson-notes h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+}
+
+.lesson-notes li {
+  margin: 0.75rem 0 0.75rem 2.5rem;
+}

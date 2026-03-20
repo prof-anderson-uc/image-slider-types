@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Slider (Local Slick Files)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="jquery-slider.css">
+
+  <!-- Slick's CSS -->
+  <link rel="stylesheet" href="slick/slick.css">
+  <link rel="stylesheet" href="slick/slick-theme.css">
+
+  <!-- jQuery MUST load first -->
+  <script src="slick/jquery-3.7.1.js" defer></script>
+
+  <!-- Slick JS depends on jQuery -->
+  <script src="slick/slick.js" defer></script>
+
+  <!-- Your initialization file & option settings -->
+  <script src="slider-init.js" defer></script>
+</head>
+
+<body>
+
+  <h1>jQuery Slider (Slick)</h1>
+  <!--
+    Slick turns the DIRECT CHILDREN of .slider into slides.
+    That’s why we use:
+      <div class="slider">
+        <div> ...slide content... </div>
+        <div> ...slide content... </div>
+      </div>
+  -->
+  <div class="slider">
+    <div><img src="../images/sq-stock01.png" alt="Slide 1"></div>
+    <div><img src="../images/sq-stock02.png" alt="Slide 2"></div>
+    <div><img src="../images/sq-stock03.png" alt="Slide 3"></div>
+    <div><img src="../images/sq-stock04.png" alt="Slide 4"></div>
+    <div><img src="../images/sq-stock05.png" alt="Slide 5"></div>
+  </div>
+
+
+
+  <!-- ======================================
+       EXPLANATION & STUDENT NOTES
+       ====================================== -->
+  <section class="lesson-notes">
+    <h2>What’s happening on this page?</h2>
+
+    <p>
+      This slider uses a classic “jQuery-era” approach: we include <strong>jQuery</strong>, we include a <strong>plugin</strong> (<a href="https://kenwheeler.github.io/slick/">Slick</a>), and then we run a short setup script that tells Slick to turn our HTML into a carousel.
+    </p>
+
+    <h3>1) The HTML (structure)</h3>
+    <ul>
+      <li><code>.slider</code> is the main container Slick looks for.</li>
+      <li>Each <strong>direct child</strong> inside <code>.slider</code> becomes one slide.</li>
+      <li>Inside each slide, you can put an image, text, buttons, captions, etc.</li>
+    </ul>
+
+    <h3>2) The CSS (appearance)</h3>
+    <ul>
+      <li>Slick provides default slider styling via <code>slick.css</code> and <code>slick-theme.css</code>.</li>
+      <li>Your file <code>jquery-slider.css</code> controls the “look” of the images (size, cropping, borders, etc.).</li>
+      <li>
+        In your CSS, you can choose:
+        <ul>
+          <li><strong><code>object-fit: cover</code></strong> (fills frame, crops)</li>
+          <li><strong><code>object-fit: contain</code></strong> (shows full image, may letterbox).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3) The JavaScript (behavior)</h3>
+    <p>
+      The file <code>slider-init.js</code> is where Slick is activated.
+      It usually looks like this:
+    </p>
+
+    <pre><code>$(function () {
+  $(".slider").slick({
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 350,
+    autoplay: false
+  });
+});</code></pre>
+
+    <h2>Customization options to try</h2>
+    <p>
+      File: <code>slider-init.js</code><br>
+      These options go inside <code>$(".slider").slick({ ... })</code>.
+      Try turning ONE option on/off at a time so you can see what it changes.
+    </p>
+
+    <h3>Starter set (safe + useful)</h3>
+    <pre><code>// Show multiple slides at once (thumbnails / galleries)
+slidesToShow: 2,
+slidesToScroll: 1,
+
+// Cross-fade instead of sliding (works best with slidesToShow: 1)
+fade: true,
+
+// Allow dragging with mouse / touch
+draggable: true,
+swipe: true,</code></pre>
+
+    <h3>Autoplay (use carefully)</h3>
+    <pre><code>// Autoplay can be distracting. Use with care.
+autoplay: true,
+autoplaySpeed: 2000,
+pauseOnHover: true,</code></pre>
+
+    <h3>Height behavior (can cause page jumping)</h3>
+    <pre><code>// Makes slider height match each slide’s content.
+// WARNING: can cause the page to jump up/down between slides.
+adaptiveHeight: true,</code></pre>
+
+    <h2>Troubleshooting checklist</h2>
+    <ul>
+      <li>If the images stack vertically, Slick did not initialize.</li>
+      <li>Open DevTools → Console. Look for red errors.</li>
+      <li>Make sure jQuery loads before Slick.</li>
+      <li>Make sure <code>slider-init.js</code> targets <code>.slider</code> exactly.</li>
+      <li>Make sure your image paths are correct.</li>
+    </ul>
+
+    <h2>Why teach this version?</h2>
+    <p>
+      This “plugin approach” is historically important and still used in many older codebases.
+      It also shows the tradeoff: you get lots of features quickly, but you add dependency files
+      and rely on someone else’s code.
+    </p>
+  </section>
+
+</body>
+</html>

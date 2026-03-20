@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla JS Image Slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="javascript-slider.css">
+
+  <!-- JS loaded early but runs after HTML is processed -->
+  <script src="javascript-slider.js" defer></script>
+</head>
+<body>
+
+  <h1>Vanilla JS Image Slider</h1>
+
+  <!--
+    .slider = the whole image slider section
+    - This helps center it and keep a consistent width.
+  -->
+  <section class="slider">
+
+    <!--
+      .viewport = the image "window" the user sees
+      - overflow: hidden hides the slides that are off-screen
+    -->
+    <div class="viewport">
+
+      <!--
+        .track = the long horizontal strip of slides
+        - We move this left/right using transform: translateX(...)
+      -->
+      <div class="track">
+
+        <!-- Each .slide is 100% width of the viewport -->
+        <div class="slide">
+          <img src="../images/sq-stock01.png" alt="Slide 1">
+        </div>
+
+        <div class="slide">
+          <img src="../images/sq-stock02.png" alt="Slide 2">
+        </div>
+
+        <div class="slide">
+          <img src="../images/sq-stock03.png" alt="Slide 3">
+        </div>
+
+        <div class="slide">
+          <img src="../images/sq-stock04.png" alt="Slide 4">
+        </div>
+
+        <div class="slide">
+          <img src="../images/sq-stock05.png" alt="Slide 5">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Arrow buttons -->
+    <button class="nav prev" type="button">◀</button>
+    <button class="nav next" type="button">▶</button>
+
+    <!-- Dot navigation -->
+    <div class="dots">
+      <button type="button" class="dot" data-index="0"></button>
+      <button type="button" class="dot" data-index="1"></button>
+      <button type="button" class="dot" data-index="2"></button>
+      <button type="button" class="dot" data-index="3"></button>
+      <button type="button" class="dot" data-index="4"></button>
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================================
+       EXPLANATION / STUDENT NOTES
+       ========================================================== -->
+
+  <section class="lesson-notes">
+    <h2>What’s happening on this page?</h2>
+
+    <p>
+      This slider is built with <strong>vanilla JavaScript</strong> (no jQuery and no plugins). Instead of calling a library function, we wrote the slider logic ourselves in
+      <code>javascript-slider.js</code>.
+    </p>
+
+    <h3>1) The HTML (structure)</h3>
+    <ul>
+      <li><code>.viewport</code> is the “window” that shows the images.</li>
+      <li><code>.track</code> is a long strip that holds every slide side-by-side.</li>
+      <li>Each <code>.slide</code> is <strong>exactly 100%</strong> of the viewport width.</li>
+      <li>The arrow buttons and dot buttons are normal HTML buttons.</li>
+    </ul>
+
+    <h3>2) The CSS (appearance + layout)</h3>
+    <ul>
+      <li><code>.viewport</code> uses <code>overflow: hidden</code> so off-screen slides don’t show.</li>
+      <li><code>.track</code> uses <code>display:flex</code> to line slides up horizontally.</li>
+      <li><code>transition:transform ...</code> creates the smooth sliding animation.</li>
+      <li>
+        Image sizing uses a fixed slider “window” height with:
+        <ul>
+          <li><code>object-fit</code>:
+        <strong><code>cover;</code></strong> crops image to fill the window</li>
+        <li><strong><code>contain;</code></strong> shows the entire image (may letterbox).</li>
+        </ul> 
+        
+      </li>
+    </ul>
+
+    <h3>3) The JavaScript (behavior)</h3>
+    <p>
+      The JavaScript keeps track of one main value:
+      <strong>the current slide index</strong> (0, 1, 2, 3).
+      When the index changes, we:
+    </p>
+    <ol>
+      <li>Move the track with <code>transform: translateX(...)</code></li>
+      <li>Update which dot has the <code>.active</code> class</li>
+    </ol>
+
+    <h2>Customization ideas</h2>
+
+    <h3>Change the “window” size</h3>
+    <p>
+      In <code>javascript-slider.css</code>, adjust the height on <code>.slide img</code>.
+    </p>
+    <pre><code>/* TRY THIS: change slider height */
+.slide img {
+  height: 350px; /* try 250px, 400px, 500px */
+}</code></pre>
+
+    <h3>Crop vs. fit the whole image</h3>
+    <pre><code>/* cover = fills frame (crops) | contain = shows whole image (letterbox) */
+.slide img {
+  object-fit: cover;   /* try contain */
+}</code></pre>
+
+    <h3>Change the animation speed</h3>
+    <p>
+      The speed is controlled by CSS (not JavaScript) because we’re animating the transform.
+    </p>
+    <pre><code>/* TRY THIS: faster/slower slide animation */
+.track {
+  transition: transform 0.35s ease; /* try 0.2s or 0.6s */
+}</code></pre>
+
+    <h3>Change the look of arrows and dots</h3>
+    <ul>
+      <li>Edit <code>.nav</code> styles for arrow size, color, and background.</li>
+      <li>Edit <code>.dot</code> and <code>.dot.active</code> styles for the indicators.</li>
+    </ul>
+
+    <h2>Troubleshooting checklist</h2>
+    <ul>
+      <li>If nothing moves when you click arrows, open DevTools → Console for errors.</li>
+      <li>Make sure the class names match between HTML / CSS / JS (<code>.track</code>, <code>.dot</code>, etc.).</li>
+      <li>Make sure your image paths are correct.</li>
+      <li>If the script is in the <code>&lt;head&gt;</code>, it must use <code>defer</code> (like this page does).</li>
+    </ul>
+    
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider Types</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="overview-styles.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header>
+      <h1>Image Slider Types</h1>
+      <p>
+        This repo contains <strong>three versions</strong> of an image slider (arrows + dot navigation), each built using a different approach: <strong>jQuery plugin</strong>, <strong>vanilla JavaScript</strong>, and <strong>cutting-edge native CSS</strong>.
+      </p>
+      <p>
+        The goal is to compare <em>how the same UI pattern</em> can be built in different ways, and to practice making smart choices based on browser support, complexity, and maintainability.
+      </p>
+    </header>
+    <main>
+      <!-- Quick links -->
+      <section class="quick-links">
+        <h2>Pick a Slider Version:</h2>
+        <ul>
+          <li><a href="jquery-slider/jquery-slider.html">jQuery Slider</a></li>
+          <li><a href="javascript-slider/javascript-slider.html">Vanilla JS Slider</a></li>
+          <li><a href="css-slider/css-slider.html">Native CSS Slider</a></li>
+        </ul>
+      </section>
+      <section class="card-grid">
+        <div class="card">
+          <h2>What this exercise does</h2>
+          <ul>
+            <li>Shows the same slider UI built 3 different ways</li>
+            <li>Uses arrows + dots in each version</li>
+            <li>Keeps the image set consistent so comparison is fair</li>
+            <li>Highlights tradeoffs: support, complexity, control</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Why we’re doing it</h2>
+          <ul>
+            <li>Sliders are a very common client request</li>
+            <li>There is no single “best” method in every situation</li>
+            <li>Learning multiple approaches makes you more flexible</li>
+            <li>Practice reading existing and writing new code</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>How to use this repo</h2>
+          <ul>
+            <li>Start with the jQuery version (oldest approach)</li>
+            <li>Then study the vanilla JS version (modern + custom)</li>
+            <li>Finish with native CSS (new features + progressive enhancement)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="common-parts">
+        <h2>What’s the same in all 3 sliders?</h2>
+
+        <ul>
+          <li><strong>Same purpose:</strong> show multiple images in a limited space.</li>
+          <li><strong>Same UI features:</strong> arrows to advance + dots to jump to a slide.</li>
+          <li><strong>Same design problem:</strong> images might not all match size perfectly, so we use
+            <code>height</code> + <code>object-fit</code> to keep the slider stable.
+          </li>
+        </ul>
+
+        <div class="note">
+          <strong>Real-world note:</strong> On an actual website, the best practice is usually to crop/resize images so they all share the same aspect ratio. For these examples, we use CSS tools to keep the slider stable anyway.
+        </div>
+      </section>
+
+      <section>
+        <h2>What’s different in each version?</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>How it works</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>jQuery</strong> (Slick)</td>
+                <td>
+                  You load <strong><a href="https://jquery.com/" target="_blank">jQuery</a></strong> + the <strong><a href="https://kenwheeler.github.io/slick/" target="_blank">Slick</a></strong> plugin. Slick generates the slider behavior for you and you can configure it further with built-in options.
+                </td>
+                <td>
+                  Fast to set up, lots of built-in features, very common in older sites.
+                </td>
+                <td>
+                  Extra dependency + extra files, not the modern default approach.
+                </td>
+                <td>
+                  Legacy sites, quick prototypes, when a plugin’s feature set fits your needs.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Vanilla JS</strong></td>
+                <td>
+                  Your code tracks the slide index and updates the slider using <code>transform: translateX(...)</code>. Buttons + dots trigger functions.
+                </td>
+                <td>
+                  No external libraries, full control, good learning tool.
+                </td>
+                <td>
+                  Code is more complex than other methods.
+                </td>
+                <td>
+                  Modern sites where you want control without pulling in an external framework.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Native CSS (Cutting Edge)</strong></td>
+                <td>
+                  Uses scroll snapping for the “slide” feel, then experimental CSS like <code>::scroll-button()</code> + <code>::scroll-marker</code> for native arrows + dots.
+                </td>
+                <td>
+                  Very lightweight, minimal code, good example of progressive enhancement and how CSS is evolving.
+                </td>
+                <td>
+                  Uses brand new CSS features that currently have limited browser support, fewer advanced behaviors than the JS version.
+                </td>
+                <td>
+                  Modern-browser audiences, demos/portfolio work, “advanced extra” patterns.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Decision guide (what should you choose?)</h2>
+
+        <ul>
+          <li><strong>If you need maximum compatibility:</strong> use the JS version (or a well-supported library/plugin).</li>
+          <li><strong>If you want the simplest “custom” solution:</strong> use the vanilla JS version.</li>
+          <li><strong>If you want to experiment / learn modern CSS:</strong> use the native CSS version (with a clear browser warning).</li>
+        </ul>
+
+        <div class="note">
+          <strong>Important:</strong> The “native CSS” version is here because CSS is quickly evolving. It takes time for browsers to implement new features so you should treat it like a cutting-edge tool that's not universally safe yet.
+        </div>
+      </section>
+
+      <section>
+        <h2>Folder map (what’s where?)</h2>
+        <ul>
+          <li><code>/jquery-slider/</code> → Slick + jQuery version</li>
+          <li><code>/javascript-slider/</code> → Vanilla JS version</li>
+          <li><code>/css-slider/</code> → Native CSS version (experimental features)</li>
+          <li><code>/images/</code> → Shared image files used by all demos</li>
+          <li><code>reset.css</code> → Shared reset stylesheet</li>
+        </ul>
+      </section>
+    </main>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* ==============================
+   BASIC PAGE STYLING
+   ============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+/* ==============================
+   SLIDER WRAPPER
+   ============================== */
+
+/*
+  .slider is the element Slick enhances.
+  We're using max-width to match the other versions but you can change or remove this setting.
+*/
+.slider {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/* ==============================
+   IMAGE SIZING STRATEGY (same as vanilla JS version)
+   ============================== */
+
+/*
+  We force a consistent "window height".
+  Slick will handle movement; we handle visuals.
+*/
+.slider img {
+  width: 100%;
+  height: 350px; /* Change to control height of images */
+  object-fit: cover;  /* TRY THIS: change to contain */
+  display: block;
+
+  border-radius: 0.5rem;
+  border: 4px solid white;
+  background: white;
+}
+
+
+/* ==============================
+   OPTIONAL: TWEAK SLICK'S DOTS A LITTLE
+   ============================== */
+/*
+  Slick creates dots with <ul class="slick-dots">.
+  This is a light touch so it resembles your other version.
+*/
+.slick-dots li button:before {
+  /* font-size: 10px; */
+}
+
+
+
+/* ==============================
+   LESSON NOTES STYLING
+   ============================== */
+
+.lesson-notes {
+  max-width: 800px;
+  margin: 8rem auto 0;
+  text-align: left;
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid #ddd;
+  line-height: 1.3;
+  font-size: 1.25rem;
+}
+
+.lesson-notes code {
+  font-family: ui-monospace, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
+.lesson-notes pre {
+  overflow-x: auto;
+  background: #f5f5f5;
+  padding: 1.5rem; 
+  margin: 0.5rem 0 2.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e5e5;
+}
+
+.lesson-notes h2 {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid silver;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-notes h2:first-of-type {
+  margin-top: 0;
+}
+
+.lesson-notes h3 {
+  font-size: 1.4rem;
+}
+
+.lesson-notes li {
+  margin: 0.75rem 0 0.75rem 2.5rem;
+}
+
+.lesson-notes ul li li {
+  margin: 0 0 0 2rem;
+}
