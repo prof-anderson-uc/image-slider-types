@@ -48,15 +48,15 @@ function updateSlider() {
   // Move the track left based on currentIndex
   var offset = currentIndex * -100;
   // Use translateX() to move the track left by offset percent
-  track.style.transform = "";
+  ;
 
   // Update active dot
   dots.forEach(function(dot) {
-    dot.classList.remove("active");
+    ;
   });
 
   // Add the "active" class to the current slide dot
-  ;
+  dots[currentIndex].classList.add("active");
 }
 
 
@@ -94,7 +94,7 @@ dots.forEach(function(dot) {
   dot.addEventListener("click", function() {
 
     var index = parseInt(this.getAttribute("data-index"));
-    ;
+     ;
 
     updateSlider();
   });
