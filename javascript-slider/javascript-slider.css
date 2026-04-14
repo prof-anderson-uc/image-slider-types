@@ -1,7 +1,6 @@
 /* ==============================
-   BASIC PAGE STYLING
+   BASIC PAGE STYLING (Not part of Slider)
    ============================== */
-
 * {
   box-sizing: border-box;
 }
@@ -20,10 +19,10 @@ h1 {
 }
 
 
+
 /* ==============================
    SLIDER SECTION
    ============================== */
-
 .slider {
   position: relative; /* allows you to position arrows on top */
   max-width: 600px; /* sets width of slider */
@@ -85,7 +84,6 @@ h1 {
 /* ==============================
    ARROW BUTTONS
    ============================== */
-
 .nav {
   position: absolute;
   top: 50%;
@@ -132,7 +130,6 @@ h1 {
 /* ==============================
    DOT NAVIGATION
    ============================== */
-
 .dots {
   margin-top: 1rem; /* space between image and dots */
   display: flex;
@@ -175,7 +172,7 @@ h1 {
 
 
 /* ==============================
-   LESSON NOTES STYLING
+   LESSON NOTES STYLING (Not part of slider)
    ============================== */
 
 .lesson-notes {
