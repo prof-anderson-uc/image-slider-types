@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="javascript-slider.css">
+  
 
   <!-- JS loaded early but runs after HTML is processed -->
-  <script src="javascript-slider.js" defer></script>
+  
 </head>
 <body>
 
@@ -19,24 +19,22 @@
     .slider = the whole image slider section
     - This helps center it and keep a consistent width.
   -->
-  <section class="slider">
+  <section>
 
     <!--
       .viewport = the image "window" the user sees
       - overflow: hidden hides the slides that are off-screen
     -->
-    <div class="viewport">
+    <div>
 
       <!--
         .track = the long horizontal strip of slides
         - We move this left/right using transform: translateX(...)
       -->
-      <div class="track">
+      <div>
 
         <!-- Each .slide is 100% width of the viewport -->
-        <div class="slide">
-          <img src="../images/sq-stock01.png" alt="Slide 1">
-        </div>
+        
 
         <div class="slide">
           <img src="../images/sq-stock02.png" alt="Slide 2">
@@ -58,12 +56,12 @@
     </div>
 
     <!-- Arrow buttons -->
-    <button class="nav prev" type="button">◀</button>
-    <button class="nav next" type="button">▶</button>
+    <button class="nav" type="button">◀</button>
+    <button class="nav" type="button">▶</button>
 
     <!-- Dot navigation -->
-    <div class="dots">
-      <button type="button" class="dot" data-index="0"></button>
+    <div>
+      
       <button type="button" class="dot" data-index="1"></button>
       <button type="button" class="dot" data-index="2"></button>
       <button type="button" class="dot" data-index="3"></button>
