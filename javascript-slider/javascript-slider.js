@@ -52,7 +52,7 @@ function updateSlider() {
 
   // Update active dot
   dots.forEach(function(dot) {
-    ;
+    dot.classList.remove("active");
   });
 
   // Add the "active" class to the current slide dot

@@ -25,8 +25,9 @@
       <section class="quick-links">
         <h2>Pick a Slider Version:</h2>
         <ul>
-          <li><a href="jquery-slider/jquery-slider.html">jQuery Slider</a></li>
           <li><a href="javascript-slider/javascript-slider.html">Vanilla JS Slider</a></li>
+          <li><a href="jquery-slider/jquery-slider.html">jQuery Slider</a></li>
+          
           <li><a href="css-slider/css-slider.html">Native CSS Slider</a></li>
         </ul>
       </section>
@@ -93,21 +94,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>jQuery</strong> (Slick)</td>
-                <td>
-                  You load <strong><a href="https://jquery.com/" target="_blank">jQuery</a></strong> + the <strong><a href="https://kenwheeler.github.io/slick/" target="_blank">Slick</a></strong> plugin. Slick generates the slider behavior for you and you can configure it further with built-in options.
-                </td>
-                <td>
-                  Fast to set up, lots of built-in features, very common in older sites.
-                </td>
-                <td>
-                  Extra dependency + extra files, not the modern default approach.
-                </td>
-                <td>
-                  Legacy sites, quick prototypes, when a plugin’s feature set fits your needs.
-                </td>
-              </tr>
-              <tr>
+                <tr>
                 <td><strong>Vanilla JS</strong></td>
                 <td>
                   Your code tracks the slide index and updates the slider using <code>transform: translateX(...)</code>. Buttons + dots trigger functions.
@@ -122,6 +109,21 @@
                   Modern sites where you want control without pulling in an external framework.
                 </td>
               </tr>
+                <td><strong>jQuery</strong> (Slick)</td>
+                <td>
+                  You load <strong><a href="https://jquery.com/" target="_blank">jQuery</a></strong> + the <strong><a href="https://kenwheeler.github.io/slick/" target="_blank">Slick</a></strong> plugin. Slick generates the slider behavior for you and you can configure it further with built-in options.
+                </td>
+                <td>
+                  Fast to set up, lots of built-in features, very common in older sites.
+                </td>
+                <td>
+                  Extra dependency + extra files, not the modern default approach.
+                </td>
+                <td>
+                  Legacy sites, quick prototypes, when a plugin’s feature set fits your needs.
+                </td>
+              </tr>
+              
               <tr>
                 <td><strong>Native CSS (Cutting Edge)</strong></td>
                 <td>
@@ -152,15 +154,15 @@
         </ul>
 
         <div class="note">
-          <strong>Important:</strong> The “native CSS” version is here because CSS is quickly evolving. It takes time for browsers to implement new features so you should treat it like a cutting-edge tool that's not universally safe yet.
+          <strong>Note:</strong> The “native CSS” version is here because CSS is quickly evolving. It takes time for browsers to implement new features so you should treat it like a cutting-edge tool that's not universally safe yet.
         </div>
       </section>
 
       <section>
         <h2>Folder map (what’s where?)</h2>
         <ul>
-          <li><code>/jquery-slider/</code> → Slick + jQuery version</li>
           <li><code>/javascript-slider/</code> → Vanilla JS version</li>
+          <li><code>/jquery-slider/</code> → Slick + jQuery version</li>
           <li><code>/css-slider/</code> → Native CSS version (experimental features)</li>
           <li><code>/images/</code> → Shared image files used by all demos</li>
           <li><code>reset.css</code> → Shared reset stylesheet</li>
